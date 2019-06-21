@@ -1,0 +1,114 @@
+﻿
+@{
+    ViewBag.Title = "DropDownList";
+}
+
+@model MVCHelpers2.Models.Sehirler
+
+@section stil{
+    <style>
+        .renk {
+            color: blue;
+            font-weight: bold;
+        }
+    </style>
+}
+<!--
+1.Kullanım
+    1.Kullanım Parametre
+    a. "id" ve "name" attribute değerleri için parametre
+    Not: Sayfa kaynağından gönderdiğiniz ViewBag'e verdiğiniz ismi Liste içerisinde verdiğiniz isim ile aynı ada sahip olmalıdır.
+
+-->
+<br />
+<br />
+
+@Html.DropDownList("SehirID")
+<hr />
+
+<!--
+     2.Kullanım
+    2.Kullanım Parametreleri
+     a. "id" ve "name" attribute değerleri için parametre
+    b. İlk sayfa yüklendiği anda seçili olarak gelen parametre için default bir değer belirleyebilirsiniz.
+-->
+
+<br />
+<br />
+@Html.DropDownList("SehirID", "Lütfen seçiniz!")
+<hr />
+
+<!--
+     3.Kullanım
+    3.Kullanım Parametreleri
+     a. "id" ve "name" attribute değerleri için parametre
+    b. Default olarak bir data kaynağından değilde, sizin belirlediğiniz bir listeyi içerisinde gösterebilirsiniz
+    Not: En sona isterseniz html attributeleri ekleyebilirsiniz.
+-->
+
+<br />
+<br />
+
+@Html.DropDownList("SehirID", new List<SelectListItem>() {
+new SelectListItem()
+{
+
+    Text ="Istanbul", Value="1"
+},
+new SelectListItem() {
+
+    Text ="Antalya", Value="2"
+
+},
+new SelectListItem()
+{
+         Text ="Ardahan", Value="3"
+}
+}, new { @style="color:red"})
+
+<hr />
+<!--
+    4.Kullanım
+    4.Kullanım Parametreleri
+     a. "id" ve "name" attribute değerleri için parametre
+     b. Default olarak bir data kaynağından değilde, sizin belirlediğiniz bir listeyi içerisinde gösterebilirsiniz
+     c. Birden fazla Attribute değeri verebilirsiniz bunun için Dictionary olarak bir dizi ister..
+-->
+
+@Html.DropDownList("SehirID", new List<SelectListItem>() {
+new SelectListItem()
+{
+
+    Text ="Istanbul", Value="1"
+},
+new SelectListItem() {
+
+    Text ="Antalya", Value="2"
+
+},
+new SelectListItem()
+{
+         Text ="Ardahan", Value="3"
+}
+}, new Dictionary<string, object>() { { "id", "sehirler" }, { "class", "renk" } })
+
+<hr />
+<hr />
+
+@Html.DropDownList("SehirID", new List<SelectListItem>
+    () {
+    new SelectListItem()
+    {
+
+    Text ="Istanbul", Value="1"
+    },
+    new SelectListItem() {
+
+    Text ="Antalya", Value="2"
+
+    },
+    new SelectListItem()
+    {
+    Text ="Ardahan", Value="3"
+    }
+}, "Lütfen Seçiniz",new { @class = "renk" })

@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "TextBox";
+}
+
+@model MVCHelpers2.Models.Personel
+
+@section stil{
+    <style>
+        .renk{
+            color:red;
+        }
+    </style>
+    }
+
+<h2>TextBox</h2>
+
+<!--
+1.Kullanım
+    1.Kullanım Parametreleri
+    a. "id" ve "name" attribute değerleri için parametre
+-->
+
+@Html.TextBox("ad")
+<hr />
+<!--
+2.Kullanım    
+
+-->
+
+@Html.TextBox("ad","burak")
+
+<!---->
+<hr />
+@Html.Label("Adınızı giriniz:")
+<hr />
+@Html.TextBox("ad","üç iki bir", new { @class="renk", id="txtAd"})
+@Html.TextBox("test",null,new { @class="renk",@placeholder="Bu alana adınızı giriniz"})
+<hr />
+<hr />
+<hr />
+@Html.TextBox(Model.Ad,Model.DogumTarihi,"{0:yyyy/MM/dd}")
+<hr />
+@Html.TextBox("Ad", Model.Ad, new Dictionary<string, object>() { { "id", "personelAdi" }, { "class", "renk" } })

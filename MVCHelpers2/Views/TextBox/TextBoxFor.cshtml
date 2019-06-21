@@ -1,0 +1,20 @@
+﻿
+@{
+    Layout = null;
+}
+
+@section stil{
+    <style>
+        .renk {
+            color: blue;
+        }
+    </style>
+}
+
+@model MVCHelpers2.Models.Personel
+
+@Html.TextBoxFor(x=> x.Ad)
+<hr />
+@Html.TextBoxFor(x=> x.Departman, new { @class="renk"})
+<hr />
+@Html.TextBoxFor(x=> x.Ad, new Dictionary<string, object>() { { "id","personelAdi"},{ "class", "renk"} })

@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "BeginForm";
+}
+
+<!--
+
+    Html.BeginForm() => Html'deki form etiketinin karşılığıdır.
+
+-->
+<br />
+<br />
+<br />
+
+<!--
+      1.Kullanım NOT: 1. kullanımda bağlı bulunduğu Action ve Controller üzerinden hareket eder.
+-->
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Post Yap" />
+}
+<hr />
+<!--
+    2.Kullanım
+    2.Kullanım Parametreleri
+    a.URL üzerinden parametre olarak id olarak id göndermek istenirse "new {id=1}" eğer id parametresi gönderilmeyecek ise "null" olarak işaretlenmelidir.
+    NOT: 2. Kullanımda bağlı bulunduğu Action ve Controller üzerinden hareket eder.
+-->
+@using (Html.BeginForm(new { id = 1 }))
+{
+    <input type="submit" value="Postback Yap" />
+}
+<hr />
+
+<!--
+      3.Kullanım
+    3. Kullanım paramewtreleri
+    a.Linke tıkladığın zaman URL üzerinden bir veya birden fazla parametre gönderilkecek ise, "RouteValueDictionary" içerisinde işlemler gerçekleştirilir.
+-->
+@using (Html.BeginForm(new RouteValueDictionary(new { id = 1 })))
+{
+    <input type="submit" value="Postback Yap" />
+
+}
+<hr />
+
+<!--
+   4.Kullanım
+    4.Kullanım Parametre
+    1.Post İşlemi gerçekleştiğinde hangi ACTİON'A GİDECEK İSE ACTİON ADI
+    B. Post işlemi sırasında action başjka bir controller içerisinde ise Controller Name
+
+-->
+@using (Html.BeginForm("PostAction", "BeginForm"))
+{
+    <input type="submit" value="PostBack" />
+}
+<hr />
+
+<!--
+         5.KULLANIM
+    5.KULLANIM PARAMETRELERİ
+    A.post işlemi gerçekleştiğinde hangi actiona gidecek ise action adı
+    B.Post işlemi sırasında action başka bir controller içerisinde ise Controller Name
+    c. Form methodlarından "Post" yada "Get" methodları seçilir.
+-->
+
+@using (Html.BeginForm("PostAction", "BeginForm", FormMethod.Post))
+{
+    <input type="submit" value="Postback" />
+}
+
+<!--
+         6.KULLANIM
+    6.KULLANIM PARAMETRELERİ
+    A.post işlemi gerçekleştiğinde hangi actiona gidecek ise action adı.
+    B.Post işlemi sırasında action başka bir controller içerisinde ise Controller Name..
+    C.Html Attribute'leri tanımlamak için gerekli alanı kullanabilirsiniz...
+-->
+@using (Html.BeginForm("PostAction", "BeginForm", new { @class = "form-horizontal" }))
+{
+
+    <input type="submit" value="PostBack Yap" />
+}
+<hr />
+<!--
+        6.KULLANIM
+    6.KULLANIM PARAMETRELERİ
+    A.post işlemi gerçekleştiğinde hangi actiona gidecek ise action adı.
+    B.Post işlemi sırasında action başka bir controller içerisinde ise Controller Name..
+    C. Sayfa post olduğu zaman URL üzerinden bir veya birden fazla parametre gönderilkecek ise, "RouteValueDictionary" içerisinde işlemler gerçekleştirilir.
+    D. Form methodlarından "Post" yada "Get" methodları seçilir.
+    E. Birden fazla Attribute değeri verebilmeniz için Dictionary olarak bir dizi ister.
+-->
+
+@using (Html.BeginForm("PostAction", "BeginForm", new RouteValueDictionary(new { id = 1 }), FormMethod.Post, new Dictionary<string, object>() { { "id","frmPost"} }))
+{
+
+<input type="submit" value="PostBack Yap" />
+}
+<hr />

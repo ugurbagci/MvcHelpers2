@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "DropdownListFor";
+}
+
+@model MVCHelpers2.Models.Sehirler
+
+<br />
+<br />
+<br />
+
+@Html.DropDownListFor(x=> x.ID, new List<SelectListItem>(){
+    new SelectListItem()
+    {
+        Text="Ankara", Value="1"
+    },
+    new SelectListItem()
+    {
+        Text="Istanbul", Value="2"
+    },
+        new SelectListItem()
+    {
+        Text="Izmir", Value="3"
+    }
+    })
+
+
+    
